@@ -9,5 +9,5 @@ Ensure the following are installed and configured:
 # To run the test:
 1) Compile the project = mvn compile
 2) Run the test using maven = mvn verify
-3) To run the project via intellij IDE, Run the SeleniumTest.java.
+3) To run the project via intellij IDE, Run the src/test/java/entrataWebTest/SeleniumTest.java.
 
