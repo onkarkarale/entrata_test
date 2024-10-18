@@ -17,6 +17,11 @@ import static java.lang.Thread.sleep;
 
 public class SeleniumTest {
 
+    /*
+     Test Description: 1.Validate Entrata website home page is displayed and loaded
+                       2. Validate Form elements of "Schedule Your Demo" by navigating to the schedule-demo page.
+                       3. Navigate back to Home Page, Validate "Solutions" dynamic drop down & navigate to one of the option.
+    */
     WebDriver driver = new ChromeDriver();
 
 
@@ -193,7 +198,8 @@ public class SeleniumTest {
 
     @Test(priority = 3)
     public void testSolutionsDropDown() throws InterruptedException {
-        // navigate back to previous home page
+        // Test Scenario : Verify "Solutions" toggle dropdown and navigate to "MultiFamily" page.
+        // navigate back to previous home page as current page is "schedule demo"
         driver.navigate().back();
         String title = driver.getTitle();
         // Assert Home page title
@@ -203,16 +209,21 @@ public class SeleniumTest {
 
         WebElement solution = driver.findElement(By.xpath("//div[@class='dropdown out w-dropdown']"));
 
+        // Pointing to "Solution" dynamic dropdown.
         Actions action = new Actions(driver);
         action.moveToElement(solution).perform();
 
+        // Select option from drop down as a "Mulifamily"
         action.moveToElement(driver.findElement(By.xpath("//a[@class='sub-menu'][normalize-space()='Multifamily']"))).click().perform();
 
+        // Validate page is navigated to Multifamily Property Management web page.
         String title1 = driver.getTitle();
         System.out.println("Currently Opened Webpage: " + title1);
-        // Assert Multifamily page
+
+        // Validate open page is Multifamily
         Assert.assertEquals(title1, "Multifamily Property Management Software | Entrata");
-        // Scroll down using Page Down key
+
+        // Scroll down to display Multifamily feature.
         action.sendKeys(org.openqa.selenium.Keys.PAGE_DOWN).perform();
 
         sleep(2000);
@@ -220,7 +231,7 @@ public class SeleniumTest {
         action.sendKeys(org.openqa.selenium.Keys.PAGE_DOWN).perform();
         action.sendKeys(org.openqa.selenium.Keys.PAGE_DOWN).perform();
 
-        // Optional: Wait to see the effect of the scroll
+        // Waiting the effect of the scroll
         sleep(2000);
 
 
@@ -230,7 +241,6 @@ public class SeleniumTest {
     public void checkPageIsReady() {
 
         JavascriptExecutor js = (JavascriptExecutor) driver;
-
 
         // condition will check ready state of page.
         if (js.executeScript("return document.readyState").toString().equals("complete")) {
