@@ -22,6 +22,8 @@ public class SeleniumTest {
                        2. Validate Form elements of "Schedule Your Demo" by navigating to the schedule-demo page.
                        3. Navigate back to Home Page, Validate "Solutions" dynamic drop down & navigate to one of the option.
     */
+
+    // Initialize the Chrome driver
     WebDriver driver = new ChromeDriver();
 
 
